@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Admin.css";
 import profile from '../../img/profile.png'
 
-const Home = () => {
+const Admin = () => {
   const [textBoxValue, setTextBoxValue] = useState("");
 
   const handleTextBoxChange = (event: {
@@ -91,4 +91,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Admin;
