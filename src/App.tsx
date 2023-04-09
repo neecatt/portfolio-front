@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import Admin from "./pages/Admin/Admin";
-// import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import StartScreen from "./components/StartScreen";
 import "animate.css/animate.min.css";
 
 function App() {
