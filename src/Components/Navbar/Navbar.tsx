@@ -8,34 +8,34 @@ const Navbar = () => {
   const [selected, setSelected] = useState(0);
   const [filename, setFilename] = useState("");
 
-  const handleClick = (index: number) => {
-    setSelected(index);
-  };
+  // const handleClick = (index: number) => {
+  //   setSelected(index);
+  // };
 
-  useEffect(() => {
-    const fetchFilename = async () => {
-      const response = await axios.get("http://localhost:3000/download");
-      setFilename(response.data);
-    };
-    fetchFilename();
-  }, []);
+  // useEffect(() => {
+  //   const fetchFilename = async () => {
+  //     const response = await axios.get("http://localhost:3000/download");
+  //     setFilename(response.data);
+  //   };
+  //   fetchFilename();
+  // }, []);
 
-  const handleDownload = async () => {
-    var url = `http://localhost:3000/download/${filename}`;
+  // const handleDownload = async () => {
+  //   var url = `http://localhost:3000/download/${filename}`;
 
-    const response = await axios({
-      url,
-      method: "GET",
-      responseType: "blob",
-    });
+  //   const response = await axios({
+  //     url,
+  //     method: "GET",
+  //     responseType: "blob",
+  //   });
 
-    var url = window.URL.createObjectURL(new Blob([response.data]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "Nijat_Abdullazada_resume.pdf");
-    document.body.appendChild(link);
-    link.click();
-  };
+  //   var url = window.URL.createObjectURL(new Blob([response.data]));
+  //   const link = document.createElement("a");
+  //   link.href = url;
+  //   link.setAttribute("download", "Nijat_Abdullazada_resume.pdf");
+  //   document.body.appendChild(link);
+  //   link.click();
+  // };
 
   return (
     <>
@@ -90,7 +90,7 @@ const Navbar = () => {
               Contact
             </a>
           </div>
-          <Button
+          {/* <Button
             onClick={handleDownload}
             border="3px"
             padding={"0.5rem"}
@@ -100,7 +100,7 @@ const Navbar = () => {
             className="text-white inline-flex"
           >
             Resume <DownloadIcon className="m-1" />
-          </Button>
+          </Button> */}
         </div>
       </nav>
     </>
