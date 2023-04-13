@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from "react";
 import "animate.css";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 
 function StartScreen() {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      navigate("/home");
-    }, 3700);
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, []);
 
   return (
     <Box
@@ -22,16 +11,22 @@ function StartScreen() {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      flexDirection="column"
+      flexDirection="row"
       backgroundColor={"black"}
       gap={4}
-      className="animate__animated animate__fadeOut animate__delay-3s "
+      className="animate__animated animate__fadeOut animate__delay-2s"
+      sx={{
+        "--animate-delay": "2.5s",
+      }}
     >
       <Text
         fontWeight="light"
         fontSize="3xl"
         textColor="white"
-        className="animate__animated animate__fadeOut animate__delay-2s"
+        className="animate__animated animate__fadeOut animate__delay-1s"
+        sx={{
+          "--animate-delay": "1.6s",
+        }}
       >
         Nijat Abdullazada
       </Text>
@@ -39,7 +34,11 @@ function StartScreen() {
         fontWeight="lighter"
         fontSize="3xl"
         textColor="white"
-        className="animate__animated animate__fadeOut animate__delay-1s"
+        className="animate__animated animate__fadeOut animate__delay animate__delay-1s"
+        sx={{
+          "--animation-duration": "1s",
+          "--animate-delay": "1.3s",
+        }}
       >
         Portfolio
       </Text>
