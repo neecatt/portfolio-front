@@ -11,8 +11,14 @@ const theme = extendTheme({
     global: {
       body: {
         bg: "black",
-        fontFamily: "YD Gothic 100",
         color: "white",
+        width: "100vw",
+        height: "100vh",
+        margin: "0",
+        marginLeft: "0",
+        marginRight: "0",
+        padding: "0",
+        fontFamily: "YD Gothic 200",
       },
     },
   },
