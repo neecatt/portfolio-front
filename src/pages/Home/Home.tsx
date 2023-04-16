@@ -1,6 +1,7 @@
 import { Box, Flex, Img, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import videoBg from "../../assets/videoBg.mp4";
+import Navbar from "../../components/Navbar";
 
 const Home = () => {
   const typingContainer = {
@@ -25,29 +26,20 @@ const Home = () => {
   };
 
   return (
-    <Box border={"1px solid red"}>
+    <Box
+      border={"1px solid gray"}
+      height="100vh"
+      overflow="hidden"
+      overscrollBehavior={"none"}
+      className="animate__animated animate__fadeIn"
+    >
+      <Navbar />
       <Box
         display="flex"
         width="100%"
         height="100%"
         className="animate__animated animate__fadeIn"
       >
-        <Box
-          flex={1}
-          position="fixed"
-          width="100vw"
-          height="100vh"
-          overflow="hidden"
-          zIndex="-999"
-        >
-          <video
-            autoPlay
-            loop
-            muted
-            src={videoBg}
-            className="w-screen h-screen object-cover opacity-50"
-          />
-        </Box>
         <Box px={4} py={6}>
           <Flex justifyContent={"center"} flexDirection="column">
             <Box fontSize={"5xl"} display={"inline-block"} fontWeight="light">
