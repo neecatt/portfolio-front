@@ -1,7 +1,7 @@
 import { Box, Flex, Img, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import videoBg from "../../assets/videoBg.mp4";
 import Navbar from "../../components/Navbar";
+import Socials from "../../components/Socials";
 
 const Home = () => {
   const typingContainer = {
@@ -26,23 +26,29 @@ const Home = () => {
   };
 
   return (
-    <Box
-      border={"1px solid gray"}
-      height="100vh"
-      overflow="hidden"
-      overscrollBehavior={"none"}
-      className="animate__animated animate__fadeIn"
-    >
+    <>
       <Navbar />
-      <Box
-        display="flex"
-        width="100%"
-        height="100%"
+      <Flex
+        border={"1px solid gray"}
+        height="100vh"
+        overflow="hidden"
+        overscrollBehavior={"none"}
+        justifyContent={"flex-start"}
+        alignItems={"center"}
         className="animate__animated animate__fadeIn"
       >
-        <Box px={4} py={6}>
+        <Flex
+          className="animate__animated animate__fadeIn"
+          overflowY={"scroll"}
+          height={"100vh"}
+          ml={"1em"}
+        >
           <Flex justifyContent={"center"} flexDirection="column">
-            <Box fontSize={"5xl"} display={"inline-block"} fontWeight="light">
+            <Box
+              fontSize={{ sm: "5xl", md: "7xl", base: "3xl" }}
+              display={"inline-block"}
+              fontWeight="light"
+            >
               <motion.div
                 variants={typingContainer}
                 initial="hidden"
@@ -55,21 +61,24 @@ const Home = () => {
                 ))}
               </motion.div>
             </Box>
-            <Text
-              className="animate__animated animate__fadeIn animate__delay-1s"
-              fontSize={"3xl"}
-              display={"inline-block"}
-              fontWeight="lighter"
-              sx={{
-                "--animate-delay": "1.4s",
-              }}
-            >
-              Web Developer
-            </Text>
+            <Box>
+              <Text
+                className="animate__animated animate__fadeIn animate__delay-1s"
+                fontSize={"3xl"}
+                display={"inline-block"}
+                fontWeight="lighter"
+                sx={{
+                  "--animate-delay": "1.4s",
+                }}
+              >
+                Web Developer
+              </Text>
+            </Box>
           </Flex>
-        </Box>
-      </Box>
-    </Box>
+          <Socials />
+        </Flex>
+      </Flex>
+    </>
   );
 };
 
