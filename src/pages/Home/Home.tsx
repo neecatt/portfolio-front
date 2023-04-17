@@ -10,7 +10,7 @@ const Home = () => {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
+        staggerChildren: 0.05,
       },
     },
   };
@@ -81,7 +81,10 @@ const Home = () => {
           flexGrow={1}
           wrap="wrap"
           py={200}
-          className="animate__animated animate__fadeIn animate__delay-3s"
+          className="animate__animated animate__fadeInUp animate__delay-3s"
+          sx={{
+            "--animate-delay": "0.5s",
+          }}
         >
           <Box
             display={"inline-block"}
@@ -117,6 +120,7 @@ const Home = () => {
             position={"absolute"}
             bottom={"7rem"}
             href="mailto:nicatabdullazade135@gmail.com"
+            target={"_blank"}
             {...borderBottomExpand}
           >
             Send Email
