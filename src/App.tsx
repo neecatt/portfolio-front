@@ -6,6 +6,7 @@ import "animate.css/animate.min.css";
 import StartScreen from "./components/StartScreen";
 import Frame from "./components/Frame";
 import BackgroundVideo from "./components/BackgroundVideo";
+import Projects from "./pages/Projects/Projects";
 
 function App() {
   const [showStartScreen, setShowStartScreen] = useState(true);
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             {showHome && <Route path="/" element={<Home />}></Route>}
             <Route path="/admin" element={<Admin />}></Route>
+            <Route path="/projects" element={<Projects />}></Route>
           </Routes>
         </div>
       </Frame>
