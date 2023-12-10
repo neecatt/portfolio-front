@@ -27,9 +27,21 @@ const Navbar: React.FC = () => {
         fontWeight={"light"}
         bg={"transparent"}
         {...borderBottomExpand}
+        borderBottom={activeButton === "About" ? "1px solid  white" : "none"}
+        _active={{ bg: "transparent" }}
+        onClick={() => setActiveButton("About")}
+      >
+        Home
+      </Button>
+      <Button
+        as={"a"}
+        fontWeight={"light"}
+        bg={"transparent"}
+        {...borderBottomExpand}
         borderBottom={activeButton === "Projects" ? "1px solid  white" : "none"}
         _active={{ bg: "transparent" }}
         onClick={() => setActiveButton("Projects")}
+        href="/projects"
       >
         Projects
       </Button>
@@ -45,16 +57,7 @@ const Navbar: React.FC = () => {
       >
         Experience
       </Button>
-      <Button
-        fontWeight={"light"}
-        bg={"transparent"}
-        {...borderBottomExpand}
-        borderBottom={activeButton === "About" ? "1px solid  white" : "none"}
-        _active={{ bg: "transparent" }}
-        onClick={() => setActiveButton("About")}
-      >
-        About
-      </Button>
+
       <Button
         fontWeight={"light"}
         bg={"transparent"}
