@@ -81,7 +81,7 @@ const Home = () => {
           flexGrow={1}
           wrap="wrap"
           py={200}
-          className="animate__animated animate__fadeInUp animate__delay-3s"
+          className="animate__animated animate__fadeIn animate__delay-3s"
           sx={{
             "--animate-delay": "0.5s",
           }}
