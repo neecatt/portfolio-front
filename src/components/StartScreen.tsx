@@ -1,10 +1,7 @@
 import "animate.css";
 import { Box, Text } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 
 function StartScreen() {
-  const navigate = useNavigate();
-
   return (
     <Box
       height="100vh"
