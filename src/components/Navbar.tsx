@@ -1,11 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Flex, TabList, Tab } from "@chakra-ui/react";
 import borderBottomExpand from "../props/borderBottomExpand";
 import borderBottomExpandResume from "../props/borderBottomExpandResume";
+import { useNavigate } from "react-router-dom";
+interface NavbarProps {
+  onChange: (index: number) => void;
+  activeTab: number;
+  onPageChange: (index: number) => void;
+}
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC = ({}) => {
   const [hideNavbar, setHideNavbar] = useState<boolean>(false);
   const [activeButton, setActiveButton] = useState<string>("");
+  const navigate = useNavigate();
+
+  const handleTabChange = (index: number) => {
+    setActiveButton("");
+    setHideNavbar(false);
+    navigate("/");
+  };
 
   return (
     <Flex
@@ -21,54 +34,60 @@ const Navbar: React.FC = () => {
       boxShadow={hideNavbar ? "sm" : "none"}
       transition="all 0.2s ease-in-out"
       zIndex={99}
-      className="animate__animated animate__fadeIn animate__delay-2s"
     >
-      <Button
-        fontWeight={"light"}
-        bg={"transparent"}
-        {...borderBottomExpand}
-        borderBottom={activeButton === "About" ? "1px solid  white" : "none"}
-        _active={{ bg: "transparent" }}
-        onClick={() => setActiveButton("About")}
-      >
-        Home
-      </Button>
-      <Button
-        as={"a"}
-        fontWeight={"light"}
-        bg={"transparent"}
-        {...borderBottomExpand}
-        borderBottom={activeButton === "Projects" ? "1px solid  white" : "none"}
-        _active={{ bg: "transparent" }}
-        onClick={() => setActiveButton("Projects")}
-        href="/projects"
-      >
-        Projects
-      </Button>
-      <Button
-        fontWeight={"light"}
-        bg={"transparent"}
-        {...borderBottomExpand}
-        borderBottom={
-          activeButton === "Experience" ? "1px solid  white" : "none"
-        }
-        _active={{ bg: "transparent" }}
-        onClick={() => setActiveButton("Experience")}
-      >
-        Experience
-      </Button>
+      <TabList textDecoration={"none"} borderBottom={"none"}>
+        <Tab
+          fontWeight={"light"}
+          bg={"transparent"}
+          {...borderBottomExpand}
+          borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+          onClick={() => {
+            setActiveButton("Home");
+            handleTabChange(0);
+          }}
+          _active={{ bg: "transparent" }}
+        >
+          Home
+        </Tab>
+        <Tab
+          fontWeight={"light"}
+          bg={"transparent"}
+          onClick={() => {
+            setActiveButton("Projects");
+            handleTabChange(1);
+          }}
+          {...borderBottomExpand}
+          borderBottom={
+            activeButton === "Projects" ? "1px solid  white" : "none"
+          }
+          _active={{ bg: "transparent" }}
+        >
+          Projects
+        </Tab>
+        <Tab
+          fontWeight={"light"}
+          bg={"transparent"}
+          {...borderBottomExpand}
+          borderBottom={
+            activeButton === "Experience" ? "1px solid  white" : "none"
+          }
+          _active={{ bg: "transparent" }}
+        >
+          Experience
+        </Tab>
 
-      <Button
-        fontWeight={"light"}
-        bg={"transparent"}
-        {...borderBottomExpandResume}
-        _active={{ bg: "transparent" }}
-        onClick={() => setActiveButton("Resume")}
-        //give color lineargradient  #AE67FA #F49867 both 100%
-        bgGradient="linear(to-r, #AE67FA, #F49867)"
-      >
-        Resume
-      </Button>
+        <Tab
+          as={"a"}
+          fontWeight={"light"}
+          bg={"transparent"}
+          {...borderBottomExpandResume}
+          _active={{ bg: "transparent" }}
+          onClick={() => setActiveButton("Resume")}
+          bgGradient="linear(to-r, #AE67FA, #F49867)"
+        >
+          Resume
+        </Tab>
+      </TabList>
     </Flex>
   );
 };
