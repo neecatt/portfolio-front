@@ -17,7 +17,7 @@ const Socials = () => {
       right="0"
       zIndex={99}
       justifyContent="space-between"
-      className="animate__animated animate__fadeIn animate__delay-2s"
+      className="animate__animated animate__fadeIn animate__delay-1s"
       w="15rem"
       gap={4}
       py={6}
@@ -31,7 +31,7 @@ const Socials = () => {
         href="https://www.facebook.com/nijatabdullazada/" //open in new tab
         target="_blank"
       >
-        <FaFacebook size={30} />
+        <FaFacebook color="white" size={30} />
       </Button>
       <Button
         as="a"
@@ -40,7 +40,7 @@ const Socials = () => {
         href="https://www.github.com/neecatt/"
         target="_blank"
       >
-        <FaGithub size={30} />
+        <FaGithub color="white" size={30} />
       </Button>
       <Button
         as={"a"}
@@ -51,7 +51,7 @@ const Socials = () => {
         href="https://www.instagram.com/nee.catt/"
         target="_blank"
       >
-        <FaInstagram size={30} />
+        <FaInstagram color="white" size={30} />
       </Button>
     </Flex>
   );
