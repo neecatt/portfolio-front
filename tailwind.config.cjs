@@ -8,6 +8,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require('flowbite/plugin'),
     function ({addVariant}) {
       addVariant('child', '& > *');
     }
