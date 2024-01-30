@@ -10,6 +10,7 @@ import {
   Flex,
   Heading,
   Icon,
+  Kbd,
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
@@ -103,6 +104,11 @@ const ProjectCard = () => {
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </Box>
+        </CardFooter>
+        <CardFooter flexWrap={"wrap"} gap={2}>
+          <Kbd opacity={0.5}>next.js</Kbd>
+          <Kbd opacity={0.5}>react</Kbd>
+          <Kbd opacity={0.5}>C#</Kbd>
         </CardFooter>
       </Card>
     </Box>
