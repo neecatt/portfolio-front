@@ -1,11 +1,7 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
-import { useState } from "react";
+import { Button, Flex } from "@chakra-ui/react";
 import { FaFacebook, FaInstagram, FaGithub } from "react-icons/fa";
-import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const Socials = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const handleDropdownClick = () => {
     console.log("clicked");
   };

@@ -1,24 +1,17 @@
 import {
-  Avatar,
-  AvatarGroup,
   Box,
-  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Flex,
   Heading,
-  Icon,
   Kbd,
-  SimpleGrid,
   Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React from "react";
-import { Link } from "react-router-dom";
 
-const ProjectCard = () => {
+const ProjectCard: React.FC = () => {
   return (
     <Box
       width={{ base: "100%", md: "16rem" }}

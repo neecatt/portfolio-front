@@ -77,15 +77,6 @@ const Projects = () => {
         <ProjectCard />
         <ProjectCard />
         <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
       </Flex>
       <Flex mb={"1rem"} justifyContent={"center"} w={"100%"}>
         {showScrollToTop && (
