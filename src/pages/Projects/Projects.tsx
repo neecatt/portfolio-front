@@ -11,6 +11,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import ProjectCard from "../../components/ProjectCard";
 import ScrollToTop from "../../components/ScrollToTop";
+
 const Projects = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   useEffect(() => {
@@ -61,7 +62,7 @@ const Projects = () => {
         alignItems={"center"}
         flexWrap={"wrap"}
         overflow={"auto"}
-        gap={5}
+        gap={3}
         p={"1em"}
         sx={{
           "&::-webkit-scrollbar": {
@@ -69,15 +70,6 @@ const Projects = () => {
           },
         }}
       >
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
         <ProjectCard />
         <ProjectCard />
         <ProjectCard />

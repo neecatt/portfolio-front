@@ -1,23 +1,17 @@
 import {
-  Avatar,
-  AvatarGroup,
   Box,
-  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Flex,
   Heading,
-  Icon,
-  SimpleGrid,
+  Kbd,
   Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React from "react";
-import { Link } from "react-router-dom";
 
-const ProjectCard = () => {
+const ProjectCard: React.FC = () => {
   return (
     <Box
       width={{ base: "100%", md: "16rem" }}
@@ -103,6 +97,11 @@ const ProjectCard = () => {
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </Box>
+        </CardFooter>
+        <CardFooter flexWrap={"wrap"} gap={2}>
+          <Kbd opacity={0.5}>next.js</Kbd>
+          <Kbd opacity={0.5}>react</Kbd>
+          <Kbd opacity={0.5}>C#</Kbd>
         </CardFooter>
       </Card>
     </Box>

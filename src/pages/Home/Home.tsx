@@ -7,6 +7,7 @@ import StartScreen from "../../components/StartScreen";
 import borderBottomExpand from "../../props/borderBottomExpand";
 import Frame from "../../components/Frame";
 import Projects from "../Projects/Projects";
+import Experience from "../Experience";
 const Home = () => {
   const typingContainer = {
     hidden: { opacity: 0 },
@@ -128,6 +129,9 @@ const Home = () => {
                 </TabPanel>
                 <TabPanel>
                   <Projects />
+                </TabPanel>
+                <TabPanel>
+                  <Experience />
                 </TabPanel>
               </TabPanels>
             </Tabs>
