@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Socials from "../../components/Socials";
 import StartScreen from "../../components/StartScreen";
-import borderBottomExpand from "../../props/borderBottomExpand";
 import Frame from "../../components/Frame";
 import Projects from "../Projects/Projects";
 import Experience from "../Experience";

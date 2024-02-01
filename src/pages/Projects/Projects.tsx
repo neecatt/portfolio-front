@@ -1,13 +1,4 @@
-import { ArrowUpIcon } from "@chakra-ui/icons";
-import {
-  Flex,
-  Box,
-  HStack,
-  SimpleGrid,
-  Stack,
-  VStack,
-  Button,
-} from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import ProjectCard from "../../components/ProjectCard";
 import ScrollToTop from "../../components/ScrollToTop";
