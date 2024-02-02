@@ -7,7 +7,10 @@ type TProps = {
 
 const Frame = (props: TProps) => {
   return (
-    <Box className="fixed top-0 left-0 right-0 bottom-0 overflow-hidden border m-4 md:m-3 animate__animated animate__fadeIn">
+    <Box
+      height={"96.5vh"}
+      className="fixed top-0 left-0 right-0 bottom-0 overflow-hidden border m-4 md:m-3 animate__animated animate__fadeIn"
+    >
       {props.children}
     </Box>
   );
