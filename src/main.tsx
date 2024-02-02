@@ -1,10 +1,10 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import "tailwindcss/tailwind.css";
 import { ChakraBaseProvider } from "@chakra-ui/react";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const theme = extendTheme({
   styles: {
@@ -26,6 +26,8 @@ const theme = extendTheme({
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ChakraBaseProvider theme={theme}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </ChakraBaseProvider>
 );

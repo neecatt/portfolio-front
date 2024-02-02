@@ -2,10 +2,6 @@ import { Button, Flex } from "@chakra-ui/react";
 import { FaFacebook, FaInstagram, FaGithub } from "react-icons/fa";
 
 const Socials = () => {
-  const handleDropdownClick = () => {
-    console.log("clicked");
-  };
-
   return (
     <Flex
       position="fixed"
@@ -23,7 +19,6 @@ const Socials = () => {
         as={"a"}
         bg={"transparent"}
         _hover={{ bg: "linkedin.500" }}
-        onClick={handleDropdownClick}
         href="https://www.facebook.com/nijatabdullazada/" //open in new tab
         target="_blank"
       >

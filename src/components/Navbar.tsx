@@ -1,31 +1,20 @@
 import React, { useState } from "react";
-import { Flex, TabList, Tab } from "@chakra-ui/react";
+import { Flex, Center } from "@chakra-ui/react";
 import borderBottomExpand from "../props/borderBottomExpand";
 import borderBottomExpandResume from "../props/borderBottomExpandResume";
-import { useNavigate } from "react-router-dom";
-interface NavbarProps {
-  onChange: (index: number) => void;
-  activeTab: number;
-  onPageChange: (index: number) => void;
-}
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = ({}) => {
   const [hideNavbar, setHideNavbar] = useState<boolean>(false);
   const [activeButton, setActiveButton] = useState<string>("");
-  const navigate = useNavigate();
-
-  const handleTabChange = (index: number) => {
-    setActiveButton("");
-    setHideNavbar(false);
-    navigate("/");
-  };
-
   return (
     <Flex
       as="nav"
       position={hideNavbar ? "fixed" : "absolute"}
-      top={0}
+      top={2}
+      alignItems="center"
       right={0}
+      gap={1}
       bg={hideNavbar ? "gray.100" : "transparent"}
       w="100%"
       justify="flex-end"
@@ -33,61 +22,61 @@ const Navbar: React.FC = ({}) => {
       px={4}
       boxShadow={hideNavbar ? "sm" : "none"}
       transition="all 0.2s ease-in-out"
-      zIndex={99}
+      margin={"8 auto"}
     >
-      <TabList textDecoration={"none"} borderBottom={"none"}>
-        <Tab
-          fontWeight={"light"}
-          bg={"transparent"}
-          {...borderBottomExpand}
-          borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
-          onClick={() => {
-            setActiveButton("Home");
-            handleTabChange(0);
-          }}
-          _active={{ bg: "transparent" }}
-        >
-          Home
-        </Tab>
-        <Tab
-          fontWeight={"light"}
-          bg={"transparent"}
-          onClick={() => {
-            setActiveButton("Projects");
-            handleTabChange(1);
-          }}
-          {...borderBottomExpand}
-          borderBottom={
-            activeButton === "Projects" ? "1px solid  white" : "none"
-          }
-          _active={{ bg: "transparent" }}
-        >
-          Projects
-        </Tab>
-        <Tab
-          fontWeight={"light"}
-          bg={"transparent"}
-          {...borderBottomExpand}
-          borderBottom={
-            activeButton === "Experience" ? "1px solid  white" : "none"
-          }
-          _active={{ bg: "transparent" }}
-        >
-          Experience
-        </Tab>
-
-        <Tab
-          as={"a"}
-          fontWeight={"light"}
-          bg={"transparent"}
-          {...borderBottomExpandResume}
-          _active={{ bg: "transparent" }}
-          onClick={() => setActiveButton("Resume")}
-          bgGradient="linear(to-r, #AE67FA, #F49867)"
-        >
-          Resume
-        </Tab>
-      </TabList>
+      <Center
+        w={"4.5rem"}
+        as={Link}
+        fontWeight={"light"}
+        bg={"transparent"}
+        {...borderBottomExpand}
+        borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+        _active={{ bg: "transparent" }}
+        to={"/"}
+        py={2}
+      >
+        Home
+      </Center>
+      <Center
+        w={"5rem"}
+        as={Link}
+        fontWeight={"light"}
+        bg={"transparent"}
+        {...borderBottomExpand}
+        borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+        _active={{ bg: "transparent" }}
+        to={"/projects"}
+        py={2}
+      >
+        Projects
+      </Center>
+      <Center
+        w={"7rem"}
+        as={Link}
+        fontWeight={"light"}
+        bg={"transparent"}
+        {...borderBottomExpand}
+        borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+        _active={{ bg: "transparent" }}
+        to={"/experience"}
+        py={2}
+      >
+        Experience
+      </Center>
+      <Center
+        w={"5rem"}
+        as={Link}
+        fontWeight={"light"}
+        bg={"transparent"}
+        {...borderBottomExpandResume}
+        bgGradient="linear(to-r, #AE67FA, #F49867)"
+        borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+        _active={{ bg: "transparent" }}
+        to={"/"}
+        py={2}
+      >
+        Resume
+      </Center>
     </Flex>
   );
 };
