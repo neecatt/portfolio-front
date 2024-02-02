@@ -1,8 +1,6 @@
 import videoBg from "../assets/videoBg.mp4";
 
-type Props = {};
-
-const BackgroundVideo = (props: Props) => {
+const BackgroundVideo = () => {
   return (
     <video
       autoPlay
