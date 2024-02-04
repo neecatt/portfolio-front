@@ -1,7 +1,7 @@
 import { ArrowUpIcon } from "@chakra-ui/icons";
 
 const ScrollToTop = () => {
-  return <ArrowUpIcon className="animate">ScrollToTop</ArrowUpIcon>;
+  return <ArrowUpIcon>ScrollToTop</ArrowUpIcon>;
 };
 
 export default ScrollToTop;
