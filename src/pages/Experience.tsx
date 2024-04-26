@@ -8,7 +8,8 @@ const Experience = () => {
       jobTitle: "Software Developer",
       companyName: "Morpho",
       date: "Jun 2023 - Present",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       latest: true,
     },
     {
@@ -30,35 +31,21 @@ const Experience = () => {
       companyName: "Morpho",
       date: "Jun 2023 - Present",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      latest: false,
+      latest: true,
     },
     {
       jobTitle: "Software Developer",
       companyName: "Morpho",
       date: "Jun 2023 - Present",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      latest: false,
+      latest: true,
     },
     {
       jobTitle: "Software Developer",
       companyName: "Morpho",
       date: "Jun 2023 - Present",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      latest: false,
-    },
-    {
-      jobTitle: "Software Developer",
-      companyName: "Morpho",
-      date: "Jun 2023 - Present",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      latest: false,
-    },
-    {
-      jobTitle: "Software Developer",
-      companyName: "Morpho",
-      date: "Jun 2023 - Present",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      latest: false,
+      latest: true,
     },
   ];
 
