@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Socials from "../../components/Socials";
+import { Socials } from "../../components";
 const Home = () => {
   const typingContainer = {
     hidden: { opacity: 0 },

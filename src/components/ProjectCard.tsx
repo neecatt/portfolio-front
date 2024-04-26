@@ -10,8 +10,13 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React from "react";
+import { TProject } from "../types/project.type";
 
-const ProjectCard: React.FC = () => {
+interface IProjectCardProps {
+  project: TProject;
+}
+
+const ProjectCard: React.FC<IProjectCardProps> = ({ project }) => {
   return (
     <Box
       width={{ base: "100%", md: "16rem" }}
@@ -35,19 +40,17 @@ const ProjectCard: React.FC = () => {
       >
         <CardHeader>
           <Heading color={"white"} size="md">
-            Customer dashboard
+            {project.title}
           </Heading>
         </CardHeader>
         <CardBody>
-          <Text color={"gray"}>
-            View a summary of all your customers over the last month.
-          </Text>
+          <Text color={"gray"}>{project.description}</Text>
         </CardBody>
         <CardFooter gap={4} alignItems={"center"}>
           <Box
             as="a"
             color={"gray"}
-            href="https://google.com"
+            href={project.githubLink}
             _hover={{
               color: "#64ffda",
               cursor: "pointer",
@@ -99,9 +102,9 @@ const ProjectCard: React.FC = () => {
           </Box>
         </CardFooter>
         <CardFooter flexWrap={"wrap"} gap={2}>
-          <Kbd opacity={0.5}>next.js</Kbd>
-          <Kbd opacity={0.5}>react</Kbd>
-          <Kbd opacity={0.5}>C#</Kbd>
+          {project.techStack?.map((stack: string) => {
+            return <Kbd opacity={0.5}>{stack}</Kbd>;
+          })}
         </CardFooter>
       </Card>
     </Box>

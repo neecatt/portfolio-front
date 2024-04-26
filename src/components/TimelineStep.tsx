@@ -1,5 +1,5 @@
 import React from "react";
-import { TJob } from "../types/job.types";
+import { TJob } from "../types/job.type";
 
 interface ITimelineProps {
   job: TJob;

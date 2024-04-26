@@ -1,16 +1,18 @@
-import { ArrowUpIcon } from "@chakra-ui/icons";
 import { Flex, Box } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import ProjectCard from "../../components/ProjectCard";
-import ScrollToTop from "../../components/ScrollToTop";
+import { ProjectCard } from "../../components";
+import { ScrollToTop } from "../../components";
+import { TProject } from "../../types/project.type";
 
 const Projects = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+
   useEffect(() => {
     const container = document.getElementById("projects");
     if (!container) return;
     container.addEventListener("scroll", () => {
-      if (container.scrollTop > 400) {
+      console.log(container.scrollTop);
+      if (container.scrollTop > 200) {
         setShowScrollToTop(true);
       } else {
         setShowScrollToTop(false);
@@ -27,6 +29,68 @@ const Projects = () => {
       });
     }
   };
+
+  const projects: TProject[] = [
+    {
+      title: "Portfolio",
+      description: "Oz saytim",
+      techStack: ["nest.js", "react.js", "redis"],
+    },
+    {
+      title: "Portfolio2",
+      description: "Oz saytim",
+      techStack: ["nest.js", "react.js", "redis"],
+      githubLink: "https://google.com",
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+  ];
 
   return (
     <Flex
@@ -51,13 +115,9 @@ const Projects = () => {
           },
         }}
       >
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {projects.map((project: TProject, index: number) => {
+          return <ProjectCard key={index} project={project} />;
+        })}
       </Flex>
       <Flex mb={"1rem"} justifyContent={"center"} w={"100%"}>
         <Box
