@@ -1,27 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import Home from './Components/Admin/Admin'
-import './App.css'
-import Navbar from './Components/Navbar/Navbar'
-import { BrowserRouter , Route, Routes } from 'react-router-dom'
-
+import "animate.css/animate.min.css";
+import BackgroundVideo from "./components/BackgroundVideo";
+import Frame from "./components/Frame";
+import Navbar from "./components/Navbar";
+import { useEffect, useState } from "react";
+import StartScreen from "./components/StartScreen";
+import AppRoutes from "./components/Routes";
+import { Flex } from "@chakra-ui/react";
 
 function App() {
+  const [showStartScreen, setShowStartScreen] = useState(true);
+  const [showHome, setShowHome] = useState(false);
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setShowStartScreen(!showStartScreen);
+      setShowHome(!showHome);
+    }, 2500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   return (
-    
-    <BrowserRouter>
-    <Navbar/>
-    <div className="App">
-      <Routes>
-        
-        <Route path='/admin' element={<Home/>}></Route>
-      </Routes>
-    </div>
-    </BrowserRouter>
-   
-  )
+    <Flex>
+      {showStartScreen ? (
+        <StartScreen />
+      ) : (
+        <Frame>
+          <BackgroundVideo />
+
+          <div className="h-[3.8rem]">
+            <Navbar />
+          </div>
+          <div className="h-auto">
+            <AppRoutes />
+          </div>
+        </Frame>
+      )}
+    </Flex>
+  );
 }
 
-export default App
+export default App;

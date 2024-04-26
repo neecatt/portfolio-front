@@ -1,25 +1,33 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
-import 'tailwindcss/tailwind.css'
-import { ChakraBaseProvider } from '@chakra-ui/react'
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import "tailwindcss/tailwind.css";
+import { ChakraBaseProvider } from "@chakra-ui/react";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: "gray.100",
+        bg: "black",
+        color: "white",
+        width: "100vw",
+        height: "100vh",
+        margin: "0",
+        marginLeft: "0",
+        marginRight: "0",
+        padding: "0",
+        fontFamily: "YD Gothic 200",
       },
     },
   },
 });
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <ChakraBaseProvider>
-    <App />
-    </ChakraBaseProvider>
-  </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <ChakraBaseProvider theme={theme}>
+    <Router>
+      <App />
+    </Router>
+  </ChakraBaseProvider>
+);
