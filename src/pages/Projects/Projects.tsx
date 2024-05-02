@@ -34,6 +34,7 @@ const Projects = () => {
     {
       title: "Portfolio",
       description: "Oz saytim",
+      githubLink: "https://google.com",
       techStack: ["nest.js", "react.js", "redis"],
     },
     {
@@ -44,7 +45,8 @@ const Projects = () => {
     },
     {
       title: "Portfolio3",
-      description: "Oz saytim",
+      description: "Oz saytim 3",
+      websiteLink: "https://google.com",
       techStack: [
         "nest.js",
         "react.js",
@@ -57,6 +59,7 @@ const Projects = () => {
     {
       title: "Portfolio3",
       description: "Oz saytim",
+      websiteLink: "https://google.com",
       techStack: [
         "nest.js",
         "react.js",
@@ -69,6 +72,7 @@ const Projects = () => {
     {
       title: "Portfolio3",
       description: "Oz saytim",
+      websiteLink: "https://google.com",
       techStack: [
         "nest.js",
         "react.js",
@@ -81,6 +85,7 @@ const Projects = () => {
     {
       title: "Portfolio3",
       description: "Oz saytim",
+      websiteLink: "https://google.com",
       techStack: [
         "nest.js",
         "react.js",
