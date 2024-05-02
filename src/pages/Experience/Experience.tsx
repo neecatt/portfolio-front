@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
-import TimelineStep from "../components/TimelineStep";
-import { TJob } from "../types/job.type";
+import { TimelineStep } from "../../components";
+import { TJob } from "../../types/job.type";
 
 const Experience = () => {
   const jobs = [
@@ -60,7 +60,7 @@ const Experience = () => {
       mt={"5em"}
       p={"1em"}
     >
-      <div className="relative border-s  border-[#319880] dark:border-gray-700 max-w-[80%] md:max-w-[75%]">
+      <div className="jobsList">
         <ol>
           {jobs.map((job: TJob, index: number) => (
             <Box
