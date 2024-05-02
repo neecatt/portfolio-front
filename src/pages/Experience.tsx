@@ -60,25 +60,25 @@ const Experience = () => {
       mt={"5em"}
       p={"1em"}
     >
-      <ol
-        className={`relative border-s  border-[#319880] dark:border-gray-700 max-w-[80%] md:max-w-[75%]`}
-      >
-        {jobs.map((job: TJob, index: number) => (
-          <Box
-            className={
-              index % 2 === 0
-                ? "animate__animated animate__fadeInLeft animate__delay-1s"
-                : "animate__animated animate__fadeInRight animate__delay-1s"
-            }
-            key={index}
-            sx={{
-              "--animate-delay": `${index * 0.3}s`,
-            }}
-          >
-            <TimelineStep job={job} />
-          </Box>
-        ))}
-      </ol>
+      <div className="relative border-s  border-[#319880] dark:border-gray-700 max-w-[80%] md:max-w-[75%]">
+        <ol>
+          {jobs.map((job: TJob, index: number) => (
+            <Box
+              className={
+                index % 2 === 0
+                  ? "animate__animated animate__fadeInLeft animate__delay-1s"
+                  : "animate__animated animate__fadeInRight animate__delay-1s"
+              }
+              key={index}
+              sx={{
+                "--animate-delay": `${index * 0.3}s`,
+              }}
+            >
+              <TimelineStep job={job} />
+            </Box>
+          ))}
+        </ol>
+      </div>
     </Flex>
   );
 };
