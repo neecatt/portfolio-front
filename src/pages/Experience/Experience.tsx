@@ -51,16 +51,7 @@ const Experience = () => {
   ];
 
   return (
-    <Flex
-      justifyContent={"center"}
-      alignItems="center"
-      width={"auto"}
-      height={"80vh"}
-      overflowY={"auto"}
-      flexWrap={"wrap"}
-      mt={"5em"}
-      p={"1em"}
-    >
+    <div className="flex justify-center items-center w-auto h-[80vh] overflow-y-auto flex-wrap mt-[5em] p-[1em]">
       <div className="jobsList">
         <ol>
           {jobs.map((job: TJob, index: number) => (
@@ -80,7 +71,7 @@ const Experience = () => {
           ))}
         </ol>
       </div>
-    </Flex>
+    </div>
   );
 };
 
