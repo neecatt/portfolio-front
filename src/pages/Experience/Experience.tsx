@@ -1,6 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { TimelineStep } from "../../components";
 import { TJob } from "../../types/job.type";
+import "./Experience.css";
 
 const Experience = () => {
   const jobs = [
