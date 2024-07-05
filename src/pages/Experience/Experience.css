@@ -1,0 +1,12 @@
+.jobsList {
+    position:relative;
+    border-inline-start-width: 1px;
+    border-color: #319880;
+    max-width: 80%;
+    left: 0;
+    padding-left:23px ;
+
+    @media (min-width: 768px) {
+        max-width: 75%;
+    }
+}

@@ -1,10 +1,12 @@
 import "animate.css/animate.min.css";
-import BackgroundVideo from "./components/BackgroundVideo";
-import Frame from "./components/Frame";
-import Navbar from "./components/Navbar";
+import {
+  BackgroundVideo,
+  Frame,
+  Navbar,
+  StartScreen,
+  AppRoutes,
+} from "./components";
 import { useEffect, useState } from "react";
-import StartScreen from "./components/StartScreen";
-import AppRoutes from "./components/Routes";
 import { Flex } from "@chakra-ui/react";
 
 function App() {

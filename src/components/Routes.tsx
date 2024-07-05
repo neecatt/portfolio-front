@@ -1,8 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/Home";
+import { Home, Projects, Experience, Error } from "../pages";
 import Admin from "../pages/Admin/Admin";
-import Projects from "../pages/Projects/Projects";
-import Experience from "../pages/Experience";
 
 const AppRoutes = () => {
   return (
@@ -12,6 +10,7 @@ const AppRoutes = () => {
       <Route path="/admin" element={<Admin />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/experience" element={<Experience />} />
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 };

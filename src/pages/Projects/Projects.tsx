@@ -1,32 +1,24 @@
 import { Flex, Box } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import ProjectCard from "../../components/ProjectCard";
-import ScrollToTop from "../../components/ScrollToTop";
+import { ProjectCard } from "../../components";
+import { ScrollToTop } from "../../components";
+import { TProject } from "../../types/project.type";
 
 const Projects = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const container = document.getElementById("projects");
-      if (!container) return;
-
-      const isAtBottom =
-        container.scrollHeight - container.scrollTop == container.clientHeight;
-
-      setShowScrollToTop(isAtBottom);
-    };
-
     const container = document.getElementById("projects");
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("scroll", handleScroll);
+    if (!container) return;
+    container.addEventListener("scroll", () => {
+      console.log(container.scrollTop);
+      if (container.scrollTop > 200) {
+        setShowScrollToTop(true);
+      } else {
+        setShowScrollToTop(false);
       }
-    };
-  }, []);
+    });
+  });
 
   const handleScrollToTop = () => {
     const container = document.getElementById("projects");
@@ -37,6 +29,73 @@ const Projects = () => {
       });
     }
   };
+
+  const projects: TProject[] = [
+    {
+      title: "Portfolio",
+      description: "Oz saytim",
+      githubLink: "https://google.com",
+      techStack: ["nest.js", "react.js", "redis"],
+    },
+    {
+      title: "Portfolio2",
+      description: "Oz saytim",
+      techStack: ["nest.js", "react.js", "redis"],
+      githubLink: "https://google.com",
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim 3",
+      websiteLink: "https://google.com",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim",
+      websiteLink: "https://google.com",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim",
+      websiteLink: "https://google.com",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+    {
+      title: "Portfolio3",
+      description: "Oz saytim",
+      websiteLink: "https://google.com",
+      techStack: [
+        "nest.js",
+        "react.js",
+        "redis",
+        "nest.js",
+        "react.js",
+        "redis",
+      ],
+    },
+  ];
 
   return (
     <Flex
@@ -61,30 +120,30 @@ const Projects = () => {
           },
         }}
       >
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {projects.map((project: TProject, index: number) => {
+          return <ProjectCard key={index} project={project} />;
+        })}
       </Flex>
       <Flex mb={"1rem"} justifyContent={"center"} w={"100%"}>
-        {showScrollToTop && (
-          <Box
-            as="button"
-            onClick={handleScrollToTop}
-            className="animate__animated animate__fadeIn"
-            _hover={{
-              cursor: "pointer",
-              backgroundColor: "gray.700",
-              borderRadius: "70%",
-            }}
-            boxSize={"2rem"}
-          >
-            <ScrollToTop />
-          </Box>
-        )}
+        <Box
+          as="button"
+          onClick={handleScrollToTop}
+          className={`animate__animated ${
+            showScrollToTop ? "animate__fadeIn" : "animate__fadeOut"
+          }`}
+          style={{
+            opacity: showScrollToTop ? 1 : 0,
+            cursor: showScrollToTop ? "pointer" : "default",
+          }}
+          _hover={{
+            cursor: "pointer",
+            backgroundColor: "gray.700",
+            borderRadius: "70%",
+          }}
+          boxSize={"2rem"}
+        >
+          <ScrollToTop />
+        </Box>
       </Flex>
     </Flex>
   );
