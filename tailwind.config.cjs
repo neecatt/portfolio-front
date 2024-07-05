@@ -1,9 +1,8 @@
 
 module.exports = {
-  purge: [
-    "./pages/**/*.{js,ts,jsx,tsx}", "./Components/**/*.{js,ts,jsx,tsx}"
-  ],
   content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
@@ -12,7 +11,7 @@ module.exports = {
   },
   plugins: [
     require('flowbite/plugin'),
-    function ({addVariant}) {
+    function ({ addVariant }) {
       addVariant('child', '& > *');
     }
   ],
