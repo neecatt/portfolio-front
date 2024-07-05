@@ -9,7 +9,7 @@ const TimelineStep: React.FC<ITimelineProps> = ({ job }) => {
   return (
     <div className="max-w-80">
       <ol>
-        <li className="mb-10 ms-4 max-w[383px]">
+        <li className="mb-10 ms-4 max-w-[383px]">
           <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700 -left-[29px]"></div>
           <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
             {job.date}
