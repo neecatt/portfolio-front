@@ -73,7 +73,6 @@ const Navbar: React.FC = ({}) => {
         borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
         _active={{ bg: "transparent" }}
         href="https://drive.google.com/file/d/1wdUCG84FbZHRLil5XDB6l6tXg1UzKzX1/view?usp=sharing"
-        download
         py={2}
       >
         Resume
