@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { ProjectCard } from "../../components";
 import { ScrollToTop } from "../../components";
 import { TProject } from "../../types/project.type";
+import getProjects from "../../api/getProjects";
 
 const Projects = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [projects, setProjects] = useState<TProject[]>([]);
 
   useEffect(() => {
     const container = document.getElementById("projects");
@@ -18,7 +20,18 @@ const Projects = () => {
         setShowScrollToTop(false);
       }
     });
-  });
+
+    const fetchProjects = async () => {
+      const projects = await getProjects();
+      const transformedProjects = projects.map((project: any) => ({
+        ...project,
+        techStack: project.techStack.map((tech: any) => tech.name),
+      }));
+      setProjects(transformedProjects);
+    };
+
+    fetchProjects();
+  }, []);
 
   const handleScrollToTop = () => {
     const container = document.getElementById("projects");
@@ -30,72 +43,72 @@ const Projects = () => {
     }
   };
 
-  const projects: TProject[] = [
-    {
-      title: "Portfolio",
-      description: "Oz saytim",
-      githubLink: "https://google.com",
-      techStack: ["nest.js", "react.js", "redis"],
-    },
-    {
-      title: "Portfolio2",
-      description: "Oz saytim",
-      techStack: ["nest.js", "react.js", "redis"],
-      githubLink: "https://google.com",
-    },
-    {
-      title: "Portfolio3",
-      description: "Oz saytim 3",
-      websiteLink: "https://google.com",
-      techStack: [
-        "nest.js",
-        "react.js",
-        "redis",
-        "nest.js",
-        "react.js",
-        "redis",
-      ],
-    },
-    {
-      title: "Portfolio3",
-      description: "Oz saytim",
-      websiteLink: "https://google.com",
-      techStack: [
-        "nest.js",
-        "react.js",
-        "redis",
-        "nest.js",
-        "react.js",
-        "redis",
-      ],
-    },
-    {
-      title: "Portfolio3",
-      description: "Oz saytim",
-      websiteLink: "https://google.com",
-      techStack: [
-        "nest.js",
-        "react.js",
-        "redis",
-        "nest.js",
-        "react.js",
-        "redis",
-      ],
-    },
-    {
-      title: "Portfolio3",
-      description: "Oz saytim",
-      websiteLink: "https://google.com",
-      techStack: [
-        "nest.js",
-        "react.js",
-        "redis",
-        "nest.js",
-        "react.js",
-        "redis",
-      ],
-    },
-  ];
+  // const projects: TProject[] = [
+  //   {
+  //     title: "Portfolio",
+  //     description: "Oz saytim",
+  //     githubLink: "https://google.com",
+  //     techStack: ["nest.js", "react.js", "redis"],
+  //   },
+  //   {
+  //     title: "Portfolio2",
+  //     description: "Oz saytim",
+  //     techStack: ["nest.js", "react.js", "redis"],
+  //     githubLink: "https://google.com",
+  //   },
+  //   {
+  //     title: "Portfolio3",
+  //     description: "Oz saytim 3",
+  //     websiteLink: "https://google.com",
+  //     techStack: [
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //     ],
+  //   },
+  //   {
+  //     title: "Portfolio3",
+  //     description: "Oz saytim",
+  //     websiteLink: "https://google.com",
+  //     techStack: [
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //     ],
+  //   },
+  //   {
+  //     title: "Portfolio3",
+  //     description: "Oz saytim",
+  //     websiteLink: "https://google.com",
+  //     techStack: [
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //     ],
+  //   },
+  //   {
+  //     title: "Portfolio3",
+  //     description: "Oz saytim",
+  //     websiteLink: "https://google.com",
+  //     techStack: [
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //       "nest.js",
+  //       "react.js",
+  //       "redis",
+  //     ],
+  //   },
+  // ];
 
   return (
     <Flex
