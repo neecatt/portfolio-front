@@ -13,7 +13,7 @@ const Experience = () => {
       const jobs = await getExperiences();
       setJobs(jobs);
     };
-
+    console.log(jobs);
     fetchExperiences();
   }, []);
 
@@ -79,7 +79,7 @@ const Experience = () => {
                 "--animate-delay": `${index * 0.3}s`,
               }}
             >
-              <TimelineStep job={job} />
+              <TimelineStep key={index} job={job} />
             </Box>
           ))}
         </ol>
