@@ -146,7 +146,7 @@ const Projects = () => {
             }}
             mx={2}
           >
-            Full-Stack Development
+            Software Engineering
           </Tab>
           <Tab
             _selected={{
@@ -193,7 +193,7 @@ const Projects = () => {
               </Box>
             ) : (
               <Center py={10}>
-                <Text color="gray.400">No full-stack projects available.</Text>
+                <Text color="gray.400">No software projects available.</Text>
               </Center>
             )}
           </TabPanel>

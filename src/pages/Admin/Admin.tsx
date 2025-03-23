@@ -75,6 +75,7 @@ const Admin: React.FC = () => {
     setFormData: setProjectForm,
   } = useForm<TProject>({
     initialValues: {
+      id: 0,
       title: "",
       description: "",
       githubLink: "",
@@ -380,7 +381,7 @@ const Admin: React.FC = () => {
               />
               <ExperienceList
                 experiences={experiences}
-                handleEditExperience={handleEditExperience}
+                handleEditExperience={(exp: TJob, id: number) => handleEditExperience(exp, id.toString())}
                 handleDeleteExperience={handleDeleteExperienceConfirm}
               />
             </Box>
@@ -399,7 +400,7 @@ const Admin: React.FC = () => {
               />
               <ProjectList
                 projects={projects}
-                handleEditProject={handleEditProject}
+                handleEditProject={(proj: TProject, id: number) => handleEditProject(proj, id.toString())}
                 handleDeleteProject={handleDeleteProjectConfirm}
               />
             </Box>

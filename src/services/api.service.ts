@@ -40,7 +40,7 @@ export class HttpService implements IHttpService {
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError;
       throw new Error(
-        `${message}: ${axiosError.response?.data?.message || axiosError.message}`
+        `${message}: ${(axiosError.response?.data as { message?: string })?.message || axiosError.message}`
       );
     }
     throw error;

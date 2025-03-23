@@ -180,7 +180,7 @@ export function useApi() {
 
   const updateResumeUrl = async (id: number, url: string) => {
     try {
-      await apiService.updateResumeUrl(id, url);
+      await apiService.updateResumeUrl(id.toString(), url);
       return true;
     } catch (error) {
       console.error('Failed to update resume URL:', error);

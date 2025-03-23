@@ -18,7 +18,7 @@ export const uploadToS3 = async (file: File): Promise<string> => {
     const command = new PutObjectCommand({
       Bucket: bucketName,
       Key: key,
-      Body: await file.arrayBuffer(),
+      Body: new Uint8Array(await file.arrayBuffer()),
       ContentType: file.type,
     });
 

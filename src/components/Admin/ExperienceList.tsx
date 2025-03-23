@@ -24,7 +24,7 @@ export const ExperienceList: React.FC<ExperienceListProps> = ({
       <Flex direction="column" gap={3}>
         {experiences.map((exp, index) => (
           <Box 
-            key={index}
+            key={exp.id}
             p={4}
             bg="whiteAlpha.100"
             borderRadius="md"
@@ -42,7 +42,7 @@ export const ExperienceList: React.FC<ExperienceListProps> = ({
                     size="sm"
                     variant="ghost"
                     colorScheme="blue"
-                    onClick={() => handleEditExperience(exp, exp.id)}
+                    onClick={() => handleEditExperience(exp, exp.id || 0)}
                   />
                   <IconButton
                     aria-label="Delete experience"
@@ -50,7 +50,7 @@ export const ExperienceList: React.FC<ExperienceListProps> = ({
                     size="sm"
                     variant="ghost"
                     colorScheme="red"
-                    onClick={() => handleDeleteExperience(exp.id)}
+                    onClick={() => handleDeleteExperience(exp.id || 0)}
                   />
                 </Flex>
               </Box>

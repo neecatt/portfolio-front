@@ -1,9 +1,7 @@
 import React, { useState, useCallback } from "react";
 import {
   Box,
-  Flex,
   Text,
-  Input,
   useToast,
   VStack,
   Icon,
