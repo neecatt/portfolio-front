@@ -1,11 +1,13 @@
-import { Button, Flex } from "@chakra-ui/react";
-import { FaFacebook, FaInstagram, FaGithub } from "react-icons/fa";
+import { Button, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 
 const Socials = () => {
+  const bottomPosition = useBreakpointValue({ base: "0", md: "20px" });
+
   return (
     <Flex
       position="fixed"
-      bottom="0"
+      bottom={bottomPosition}
       right="0"
       zIndex={99}
       justifyContent="space-between"
@@ -18,11 +20,11 @@ const Socials = () => {
       <Button
         as={"a"}
         bg={"transparent"}
-        _hover={{ bg: "linkedin.500" }}
-        href="https://www.facebook.com/nijatabdullazada/" //open in new tab
+        _hover={{ bg: "#0077B5" }}
+        href="https://www.linkedin.com/in/nijatabdullazada/"
         target="_blank"
       >
-        <FaFacebook color="white" size={30} />
+        <FaLinkedin color="white" size={30} />
       </Button>
       <Button
         as="a"
