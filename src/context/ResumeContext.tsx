@@ -34,7 +34,7 @@ export const ResumeProvider: React.FC<ResumeProviderProps> = ({ children }) => {
     const fetchResumeUrl = async () => {
       try {
         const data = await apiService.getResumeUrl("1");
-        if (data && data.link) {
+        if (data?.link) {
           setResumeUrl(data.link);
         }
       } catch (error) {
@@ -52,7 +52,11 @@ export const ResumeProvider: React.FC<ResumeProviderProps> = ({ children }) => {
   };
 
   return (
-    <ResumeContext.Provider value={{ resumeUrl, updateResumeUrlState }}>
+    <ResumeContext.Provider 
+      value={React.useMemo(() => ({ 
+        resumeUrl, 
+        updateResumeUrlState 
+      }), [resumeUrl, updateResumeUrlState])}>
       {children}
     </ResumeContext.Provider>
   );
