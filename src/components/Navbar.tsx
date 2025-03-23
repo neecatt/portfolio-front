@@ -1,12 +1,77 @@
 import React, { useState } from "react";
-import { Flex, Center } from "@chakra-ui/react";
+import { Flex, Center, useToast } from "@chakra-ui/react";
 import borderBottomExpand from "../props/borderBottomExpand";
 import borderBottomExpandResume from "../props/borderBottomExpandResume";
 import { Link } from "react-router-dom";
+import { useResume } from "../context/ResumeContext";
+import { getSignedUrl } from "../services/aws.service";
 
 const Navbar: React.FC = ({}) => {
   const [hideNavbar, setHideNavbar] = useState<boolean>(false);
   const [activeButton, setActiveButton] = useState<string>("");
+  const [isDownloading, setIsDownloading] = useState<boolean>(false);
+  const { resumeUrl } = useResume();
+  const toast = useToast();
+
+  const handleResumeDownload = async (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (isDownloading) return;
+
+    try {
+      setIsDownloading(true);
+
+      if (resumeUrl.startsWith("/")) {
+        const link = document.createElement("a");
+        link.href = resumeUrl;
+        link.download = "resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        return;
+      }
+
+      if (resumeUrl.includes("amazonaws.com")) {
+        const urlParts = resumeUrl.split("/");
+        const key = urlParts.slice(3).join("/");
+
+        const signedUrl = await getSignedUrl(key);
+
+        const link = document.createElement("a");
+        link.href = signedUrl;
+        link.download = "resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        const link = document.createElement("a");
+        link.href = resumeUrl;
+        link.download = "resume.pdf";
+        link.target = "_blank";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      toast({
+        title: "Download started",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+      toast({
+        title: "Download failed",
+        description: "Please try again later",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setIsDownloading(false);
+    }
+  };
   return (
     <Flex
       as="nav"
@@ -72,10 +137,12 @@ const Navbar: React.FC = ({}) => {
         bgGradient="linear(to-r, #AE67FA, #F49867)"
         borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
         _active={{ bg: "transparent" }}
-        href="https://drive.google.com/file/d/1wdUCG84FbZHRLil5XDB6l6tXg1UzKzX1/view?usp=sharing"
+        href={resumeUrl}
+        onClick={handleResumeDownload}
+        cursor="pointer"
         py={2}
       >
-        Resume
+        {isDownloading ? "Loading..." : "Resume"}
       </Center>
     </Flex>
   );
