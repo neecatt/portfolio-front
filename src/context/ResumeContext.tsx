@@ -34,8 +34,10 @@ export const ResumeProvider: React.FC<ResumeProviderProps> = ({ children }) => {
     const fetchResumeUrl = async () => {
       try {
         const data = await apiService.getResumeUrl("1");
-        if (data?.link) {
+        if (data && typeof data === 'object' && typeof data.link === 'string') {
           setResumeUrl(data.link);
+        } else {
+          console.warn('Invalid resume URL data received:', data);
         }
       } catch (error) {
         console.error("Failed to fetch resume URL:", error);
