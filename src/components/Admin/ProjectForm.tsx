@@ -99,7 +99,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
             <Text color="gray.300" mb={1}>Category</Text>
             <Select 
               name="category"
-              value={projectForm.category}
+              value={typeof projectForm.category === 'object' ? projectForm.category.name : projectForm.category}
               onChange={handleProjectChange}
               bg="whiteAlpha.100"
               border="1px solid"

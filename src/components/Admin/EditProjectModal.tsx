@@ -148,7 +148,7 @@ export const EditProjectModal: React.FC<EditProjectModalProps> = ({
                 </Text>
                 <Select
                   name="category"
-                  value={projectForm.category}
+                  value={projectForm.category?.toString() || ''}
                   onChange={handleProjectChange}
                   bg="whiteAlpha.100"
                   border="1px solid"
