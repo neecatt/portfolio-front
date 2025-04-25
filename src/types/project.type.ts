@@ -1,5 +1,5 @@
 export type TProject = {
-  id: number;
+  id?: number;
   title: string;
   description: string;
   githubLink?: string;
