@@ -47,7 +47,7 @@ const Navbar: React.FC = ({}) => {
         const link = document.createElement("a");
         link.href = resumeUrl;
         link.download = "resume.pdf";
-        link.target = "_blank";
+        // Removing target="_blank" to ensure consistent download behavior across devices
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
