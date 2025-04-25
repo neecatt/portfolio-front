@@ -75,7 +75,6 @@ const Admin: React.FC = () => {
     setFormData: setProjectForm,
   } = useForm<TProject>({
     initialValues: {
-      id: 0,
       title: "",
       description: "",
       githubLink: "",

@@ -50,7 +50,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                   size="sm"
                   variant="ghost"
                   colorScheme="blue"
-                  onClick={() => handleEditProject(project, project.id || 0)}
+                  onClick={() => project.id !== undefined && handleEditProject(project, project.id)}
                 />
                 <IconButton
                   aria-label="Delete project"
