@@ -58,7 +58,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                   size="sm"
                   variant="ghost"
                   colorScheme="red"
-                  onClick={() => handleDeleteProject(project.id)}
+                  onClick={() => project.id !== undefined && handleDeleteProject(project.id)}
                 />
               </Flex>
             </Flex>
