@@ -1,7 +1,9 @@
 export type TProject = {
+  id?: number;
   title: string;
   description: string;
-  githubLink?: string | undefined;
-  websiteLink?: string | undefined;
-  techStack?: string[] | undefined;
+  githubLink?: string;
+  websiteLink?: string;
+  techStack: Array<string | {id: number, name: string}>;
+  category: 'AI' | 'Full-Stack' | {id: number, name: string};
 };

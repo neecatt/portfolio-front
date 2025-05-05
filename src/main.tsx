@@ -2,9 +2,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import "tailwindcss/tailwind.css";
-import { ChakraBaseProvider } from "@chakra-ui/react";
-import { extendTheme, ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter, BrowserRouter as Router } from "react-router-dom";
+import { ChakraBaseProvider, extendTheme } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { ResumeProvider } from "./context/ResumeContext";
 
 const theme = extendTheme({
   styles: {
@@ -12,22 +13,33 @@ const theme = extendTheme({
       body: {
         bg: "black",
         color: "white",
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         margin: "0",
         marginLeft: "0",
         marginRight: "0",
         padding: "0",
         fontFamily: "YD Gothic 200",
+        overflowX: "hidden",
       },
     },
+  },
+  breakpoints: {
+    sm: "320px",
+    md: "768px",
+    lg: "960px",
+    xl: "1200px",
   },
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ChakraBaseProvider theme={theme}>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <ResumeProvider>
+          <App />
+        </ResumeProvider>
+      </AuthProvider>
     </BrowserRouter>
   </ChakraBaseProvider>
 );
