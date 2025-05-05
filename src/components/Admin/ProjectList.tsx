@@ -50,7 +50,10 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                   size="sm"
                   variant="ghost"
                   colorScheme="blue"
-                  onClick={() => project.id !== undefined && handleEditProject(project, project.id)}
+                  onClick={() =>
+                    project.id !== undefined &&
+                    handleEditProject(project, project.id)
+                  }
                 />
                 <IconButton
                   aria-label="Delete project"
@@ -58,7 +61,9 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                   size="sm"
                   variant="ghost"
                   colorScheme="red"
-                  onClick={() => project.id !== undefined && handleDeleteProject(project.id)}
+                  onClick={() =>
+                    project.id !== undefined && handleDeleteProject(project.id)
+                  }
                 />
               </Flex>
             </Flex>

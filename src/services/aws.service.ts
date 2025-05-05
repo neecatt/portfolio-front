@@ -1,46 +1,41 @@
-import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
-import { getSignedUrl as getPresignedUrl } from '@aws-sdk/s3-request-presigner';
+import { apiService } from "./api.service";
 
-const s3Client = new S3Client({
-  region: import.meta.env.VITE_AWS_REGION,
-  credentials: {
-    accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY_ID,
-    secretAccessKey: import.meta.env.VITE_AWS_SECRET_ACCESS_KEY,
-  },
-});
+export interface IS3Service {
+  uploadToS3(file: File): Promise<string>;
+  getSignedUrl(key: string): Promise<string>;
+}
 
-const bucketName = import.meta.env.VITE_AWS_BUCKET_NAME;
+export class S3Service implements IS3Service {
+  async uploadToS3(file: File): Promise<string> {
+    try {
+      const response = await apiService.get<{ url: string }>(
+        `s3/presigned-url?filename=${file.name}`
+      );
+      const { url } = response;
 
-export const uploadToS3 = async (file: File): Promise<string> => {
-  try {
-    const key = `resumes/${Date.now()}-${file.name}`;
-    
-    const command = new PutObjectCommand({
-      Bucket: bucketName,
-      Key: key,
-      Body: new Uint8Array(await file.arrayBuffer()),
-      ContentType: file.type,
-    });
+      await fetch(url, {
+        method: "PUT",
+        body: file,
+      });
 
-    await s3Client.send(command);
-    return `https://${bucketName}.s3.${import.meta.env.VITE_AWS_REGION}.amazonaws.com/${key}`;
-  } catch (error) {
-    console.error('Error uploading file to S3:', error);
-    throw new Error('Failed to upload file to S3');
+      return file.name;
+    } catch (error) {
+      console.error("Error uploading file to R2:", error);
+      throw new Error("Failed to upload file to R2");
+    }
   }
-};
 
-export const getSignedUrl = async (key: string): Promise<string> => {
-  try {
-    const command = new GetObjectCommand({
-      Bucket: bucketName,
-      Key: key,
-    });
-
-    const url = await getPresignedUrl(s3Client, command, { expiresIn: 3600 });
-    return url;
-  } catch (error) {
-    console.error('Error generating signed URL:', error);
-    throw new Error('Failed to generate download URL');
+  async getSignedUrl(key: string): Promise<string> {
+    try {
+      const response = await apiService.get<{ url: string }>(
+        `s3/download-url?filename=${key}`
+      );
+      return response.url;
+    } catch (error) {
+      console.error("Error generating signed URL:", error);
+      throw new Error("Failed to generate download URL");
+    }
   }
-};
+}
+
+export const s3Service = new S3Service();

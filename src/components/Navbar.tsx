@@ -4,7 +4,8 @@ import borderBottomExpand from "../props/borderBottomExpand";
 import borderBottomExpandResume from "../props/borderBottomExpandResume";
 import { Link } from "react-router-dom";
 import { useResume } from "../context/ResumeContext";
-import { getSignedUrl } from "../services/aws.service";
+import { s3Service } from "../services/aws.service";
+import { apiService } from "../services/api.service";
 
 const Navbar: React.FC = ({}) => {
   const [hideNavbar, setHideNavbar] = useState<boolean>(false);
@@ -21,37 +22,17 @@ const Navbar: React.FC = ({}) => {
     try {
       setIsDownloading(true);
 
-      if (resumeUrl.startsWith("/")) {
-        const link = document.createElement("a");
-        link.href = resumeUrl;
-        link.download = "resume.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        return;
-      }
+      const response = await apiService.getResumeUrl("1");
+      const resumeKey = response.link;
 
-      if (resumeUrl.includes("amazonaws.com")) {
-        const urlParts = resumeUrl.split("/");
-        const key = urlParts.slice(3).join("/");
+      const signedUrl = await s3Service.getSignedUrl(resumeKey);
 
-        const signedUrl = await getSignedUrl(key);
-
-        const link = document.createElement("a");
-        link.href = signedUrl;
-        link.download = "resume.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        const link = document.createElement("a");
-        link.href = resumeUrl;
-        link.download = "resume.pdf";
-        // Removing target="_blank" to ensure consistent download behavior across devices
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
+      const link = document.createElement("a");
+      link.href = signedUrl;
+      link.download = "resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
       toast({
         title: "Download started",

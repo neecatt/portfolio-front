@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useResume } from "../../context/ResumeContext";
 import { FiUpload } from "react-icons/fi";
-import { uploadToS3 } from "../../services/aws.service";
+import { s3Service } from "../../services/aws.service";
 import { useApi } from "../../hooks/useApi";
 
 interface ResumeFormProps {}
@@ -70,7 +70,7 @@ export const ResumeForm: React.FC<ResumeFormProps> = () => {
   const handleFileUpload = async (file: File) => {
     setIsLoading(true);
     try {
-      const s3Url = await uploadToS3(file);
+      const s3Url = await s3Service.uploadToS3(file);
       console.log(s3Url);
       await updateResumeUrl(1, s3Url);
       updateResumeUrlState(s3Url);
