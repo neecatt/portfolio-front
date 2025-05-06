@@ -6,6 +6,7 @@ import { ChakraBaseProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ResumeProvider } from "./context/ResumeContext";
+import { initializeAnalytics } from "./services/analytics.service";
 
 const theme = extendTheme({
   styles: {
@@ -31,6 +32,9 @@ const theme = extendTheme({
     xl: "1200px",
   },
 });
+
+// Initialize Google Analytics
+initializeAnalytics();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ChakraBaseProvider theme={theme}>
