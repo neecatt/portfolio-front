@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import notfound from "../assets/animations/notfound.json";

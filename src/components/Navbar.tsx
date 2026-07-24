@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Flex, Center, useToast } from "@chakra-ui/react";
+import { Center, useToast } from "@chakra-ui/react";
 import borderBottomExpand from "../props/borderBottomExpand";
 import borderBottomExpandResume from "../props/borderBottomExpandResume";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useResume } from "../context/ResumeContext";
 import { s3Service } from "../services/aws.service";
 import { apiService } from "../services/api.service";
@@ -13,6 +13,7 @@ const Navbar: React.FC = ({}) => {
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
   const { resumeUrl } = useResume();
   const toast = useToast();
+  const location = useLocation();
 
   const handleResumeDownload = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -54,29 +55,14 @@ const Navbar: React.FC = ({}) => {
     }
   };
   return (
-    <Flex
-      as="nav"
-      position={hideNavbar ? "fixed" : "absolute"}
-      top={2}
-      alignItems="center"
-      right={0}
-      gap={1}
-      bg={hideNavbar ? "gray.100" : "transparent"}
-      w="100%"
-      justify="flex-end"
-      py={2}
-      px={4}
-      boxShadow={hideNavbar ? "sm" : "none"}
-      transition="all 0.2s ease-in-out"
-      margin={"8 auto"}
-    >
+    <nav className={`navbar-shell${hideNavbar ? " navbar-shell-hidden" : ""}`}>
       <Center
         w={"4.5rem"}
         as={Link}
         fontWeight={"light"}
         bg={"transparent"}
         {...borderBottomExpand}
-        borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+        borderBottom={location.pathname === "/" ? "1px solid white" : "none"}
         _active={{ bg: "transparent" }}
         to={"/"}
         py={2}
@@ -89,7 +75,7 @@ const Navbar: React.FC = ({}) => {
         fontWeight={"light"}
         bg={"transparent"}
         {...borderBottomExpand}
-        borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+        borderBottom={location.pathname.startsWith("/projects") ? "1px solid white" : "none"}
         _active={{ bg: "transparent" }}
         to={"/projects"}
         py={2}
@@ -102,7 +88,7 @@ const Navbar: React.FC = ({}) => {
         fontWeight={"light"}
         bg={"transparent"}
         {...borderBottomExpand}
-        borderBottom={activeButton === "Home" ? "1px solid  white" : "none"}
+        borderBottom={location.pathname === "/experience" ? "1px solid white" : "none"}
         _active={{ bg: "transparent" }}
         to={"/experience"}
         py={2}
@@ -125,7 +111,7 @@ const Navbar: React.FC = ({}) => {
       >
         {isDownloading ? "Loading..." : "Resume"}
       </Center>
-    </Flex>
+    </nav>
   );
 };
 
