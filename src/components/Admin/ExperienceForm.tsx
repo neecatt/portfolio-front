@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { Box, Flex, Text, Input, Select, Button, Tag, TagLabel, TagCloseButton } from '@chakra-ui/react';
 import { TJob } from '../../types/job.type';

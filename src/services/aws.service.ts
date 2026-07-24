@@ -9,12 +9,13 @@ export class S3Service implements IS3Service {
   async uploadToS3(file: File): Promise<string> {
     try {
       const response = await apiService.get<{ url: string }>(
-        `s3/presigned-url?filename=${file.name}`
+        `s3/presigned-url?filename=${encodeURIComponent(file.name)}&type=${encodeURIComponent(file.type)}`
       );
       const { url } = response;
 
       await fetch(url, {
         method: "PUT",
+        headers: { "Content-Type": file.type },
         body: file,
       });
 
@@ -28,7 +29,7 @@ export class S3Service implements IS3Service {
   async getSignedUrl(key: string): Promise<string> {
     try {
       const response = await apiService.get<{ url: string }>(
-        `s3/download-url?filename=${key}`
+        `s3/download-url?filename=${encodeURIComponent(key)}`
       );
       return response.url;
     } catch (error) {

@@ -21,6 +21,7 @@ export function useForm<T extends FormData>({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    const checked = 'checked' in e.target ? (e.target as HTMLInputElement).checked : undefined;
     
     if (name === 'description' && 'description' in formData) {
       const descriptions = Array.isArray(value)
@@ -45,7 +46,7 @@ export function useForm<T extends FormData>({
     } else {
       setFormData(prev => ({
         ...prev,
-        [name]: name === 'latest' ? value === 'true' : value
+        [name]: name === 'latest' || name === 'featured' || name === 'published' ? (checked ?? value === 'true') : value
       }));
     }
   };
