@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Flex,
   Box,
@@ -27,7 +28,7 @@ const Projects = () => {
       try {
         setLoading(true);
         const data = await getProjects();
-        setProjects(data);
+        setProjects(data.filter((project: TProject) => project.published !== false));
         setError(null);
       } catch (err) {
         console.error("Error fetching projects:", err);

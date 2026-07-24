@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig } from "axios";
 import { TProject } from "../types/project.type";
 import { TJob } from "../types/job.type";
+import { TProfile } from "../types/profile.type";
 
 export interface IHttpService {
   get<T>(url: string, config?: AxiosRequestConfig): Promise<T>;
@@ -17,10 +18,15 @@ export interface IApiService {
   getExperiences(): Promise<TJob[]>;
   createExperience(experience: TJob): Promise<TJob>;
   updateExperience(id: string, experience: TJob): Promise<TJob>;
+  updateExperienceOrder(id: string, sortOrder: number): Promise<TJob>;
   deleteExperience(id: string): Promise<void>;
   updateResumeUrl(id: string, url: string): Promise<void>;
   getResumeUrl(id: string): Promise<{ link: string }>;
   uploadResume(id: string, file: File): Promise<{ link: string }>;
+  getProfile(): Promise<TProfile>;
+  updateProfile(profile: Partial<TProfile>): Promise<TProfile>;
+  addProjectMedia(id: string, media: { key: string; altText?: string; kind?: string; sortOrder?: number }): Promise<any>;
+  deleteProjectMedia(id: string, mediaId: string): Promise<void>;
 }
 
 export class HttpService implements IHttpService {
@@ -113,6 +119,7 @@ export class ApiService extends HttpService implements IApiService {
     return this.patch<TProject, TProject>(`/projects/${id}`, project);
   }
 
+
   async deleteProject(id: string): Promise<void> {
     return this.delete(`/projects/${id}`);
   }
@@ -127,6 +134,10 @@ export class ApiService extends HttpService implements IApiService {
 
   async updateExperience(id: string, experience: TJob): Promise<TJob> {
     return this.patch<TJob, TJob>(`/experience/${id}`, experience);
+  }
+
+  async updateExperienceOrder(id: string, sortOrder: number): Promise<TJob> {
+    return this.patch<TJob, { sortOrder: number }>(`/experience/${id}`, { sortOrder });
   }
 
   async deleteExperience(id: string): Promise<void> {
@@ -145,6 +156,22 @@ export class ApiService extends HttpService implements IApiService {
     const formData = new FormData();
     formData.append('file', file);
     return this.post<{ link: string }, FormData>(`/resume/${id}/upload`, formData);
+  }
+
+  public async getProfile(): Promise<TProfile> {
+    return this.get<TProfile>("/profile");
+  }
+
+  public async updateProfile(profile: Partial<TProfile>): Promise<TProfile> {
+    return this.patch<TProfile, Partial<TProfile>>("/profile", profile);
+  }
+
+  public async addProjectMedia(id: string, media: { key: string; altText?: string; kind?: string; sortOrder?: number }) {
+    return this.post(`/projects/${id}/media`, media);
+  }
+
+  public async deleteProjectMedia(id: string, mediaId: string): Promise<void> {
+    return this.delete(`/projects/${id}/media/${mediaId}`);
   }
 }
 
