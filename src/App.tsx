@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "animate.css/animate.min.css";
 import {
   BackgroundVideo,

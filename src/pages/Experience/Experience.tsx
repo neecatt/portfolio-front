@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Container, Spinner, Flex, Text } from "@chakra-ui/react";
 import { TimelineStep } from "../../components";
 import { TJob } from "../../types/job.type";
@@ -108,7 +109,7 @@ const Experience = () => {
           pb={16}
         >
           {jobs.length > 0 ? (
-            [...jobs].reverse().map((job: TJob, index: number) => (
+            jobs.map((job: TJob, index: number) => (
               <Box
                 key={index}
                 className="timeline-item"

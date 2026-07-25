@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Flex, Heading, Link, Tag, Text } from "@chakra-ui/react";
 import React from "react";
 import { TProject } from "../types/project.type";

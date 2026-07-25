@@ -140,6 +140,17 @@ export function useApi() {
     }
   };
 
+  const reorderExperiences = async (experiences: TJob[]) => {
+    await Promise.all(
+      experiences.map((experience, index) =>
+        experience.id === undefined
+          ? Promise.resolve()
+          : apiService.updateExperienceOrder(String(experience.id), index)
+      )
+    );
+    await fetchExperiences();
+  };
+
   const deleteExperience = async (id: string) => {
     setExperiencesState(prev => ({ ...prev, loading: true }));
     try {
@@ -207,6 +218,7 @@ export function useApi() {
     createProject,
     updateExperience,
     updateProject,
+    reorderExperiences,
     deleteExperience,
     deleteProject,
     updateResumeUrl,

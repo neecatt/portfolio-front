@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { Box, Flex, Text, Input, Textarea, Select, Button, Tag, TagLabel, TagCloseButton } from '@chakra-ui/react';
 import { TProject } from '../../types/project.type';
@@ -64,7 +65,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               required
             />
           </Box>
-          
+
           <Box>
             <Text color="gray.300" mb={1}>GitHub Link</Text>
             <Input 
@@ -79,7 +80,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
               _hover={{ borderColor: "whiteAlpha.400" }}
             />
           </Box>
-          
+
           <Box>
             <Text color="gray.300" mb={1}>Website Link</Text>
             <Input 

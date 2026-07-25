@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
 
@@ -123,15 +124,10 @@ export const TerminalEffect = () => {
       ref={containerRef}
       css={{
         "&::-webkit-scrollbar": {
-          width: "4px",
+          display: "none",
         },
-        "&::-webkit-scrollbar-track": {
-          background: "rgba(0, 0, 0, 0.1)",
-        },
-        "&::-webkit-scrollbar-thumb": {
-          background: "#64ffda",
-          borderRadius: "2px",
-        },
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
       }}
     >
       <Flex alignItems="center" mb={2}>

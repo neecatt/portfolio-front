@@ -5,4 +5,8 @@ export type TJob = {
   date: string;
   description: string[];
   latest: boolean;
+  category?: string;
+  sortOrder?: number;
+  technologies?: string[];
+  companyLink?: string;
 };

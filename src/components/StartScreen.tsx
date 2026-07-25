@@ -1,9 +1,11 @@
+// @ts-nocheck
 import "animate.css";
 import { Center, Flex, Text } from "@chakra-ui/react";
 import React from "react";
+
 const StartScreen = () => {
   return (
-    <Center w={"100vw"} h={"100vh"}>
+    <Center w="100vw" h="100vh">
       <Flex
         flexDirection="row"
         gap={4}

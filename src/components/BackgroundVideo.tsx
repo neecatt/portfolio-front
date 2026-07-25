@@ -1,4 +1,5 @@
 import videoBg from "../assets/videoBg.mp4";
+import posterImg from "../assets/icon.png";
 
 const BackgroundVideo = () => {
   return (
@@ -8,6 +9,9 @@ const BackgroundVideo = () => {
       loop
       className="absolute top-0 left-0 w-full h-full object-cover opacity-[0.22]"
       playsInline
+      preload="none"
+      poster={posterImg}
+      aria-hidden="true"
     >
       <source src={videoBg} type="video/mp4" />
     </video>

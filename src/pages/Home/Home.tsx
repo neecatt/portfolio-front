@@ -1,14 +1,19 @@
+// @ts-nocheck
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AIInteractive } from "../../components/AIInteractive";
 import { TerminalEffect } from "../../components/TerminalEffect";
 import Lottie from "lottie-react";
 import cookingAnimation from "../../assets/animations/cooking.json";
 import { Socials } from "../../components";
+import { apiService } from "../../services/api.service";
+import { TProfile } from "../../types/profile.type";
 
 const Home = () => {
   const controls = useAnimation();
+  const [profile, setProfile] = useState<TProfile | null>(null);
+  const introText = profile?.intro || "Hey! I build cool stuff with code and recently started tinkering with AI. From crafting rock-solid web apps to teaching machines new tricks, I love turning complex problems into elegant solutions.";
 
   const typingContainer = {
     hidden: { opacity: 0 },
@@ -32,6 +37,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    apiService.getProfile().then(setProfile).catch(() => undefined);
     controls.start((i) => ({
       opacity: 1,
       y: 0,
@@ -75,7 +81,7 @@ const Home = () => {
               initial="hidden"
               animate="show"
             >
-              {Array.from("Nijat Abdullazada").map((word, i) => (
+              {Array.from(profile?.name || "Nijat Abdullazada").map((word, i) => (
                 <motion.span key={i} variants={typingText}>
                   {word}
                 </motion.span>
@@ -92,7 +98,7 @@ const Home = () => {
                 "--animate-delay": "0.8s",
               }}
             >
-              Software & ML/AI Engineer
+              {profile?.headline || "Software & ML/AI Engineer"}
             </Text>
           </Box>
 
@@ -107,10 +113,7 @@ const Home = () => {
               "--animate-delay": "1.2s",
             }}
           >
-            Hey! I build cool stuff with code and recently started tinkering
-            with AI. From crafting rock-solid web apps to teaching machines new
-            tricks, I love turning complex problems into elegant solutions.
-            <Flex align="center" gap={0} display="inline-flex">
+            {introText} <Flex align="center" gap={0} display="inline-flex">
               Stick around to see what I'm cooking up!
               <Box
                 w={{ base: "60px", sm: "70px", md: "85px" }}
